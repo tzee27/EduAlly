@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'role_selection_page.dart';
+import 'teacher_login_page.dart';
+import 'home_screen.dart';
 
 void main() async {
+   SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.dark,
+    ),
+  );
   runApp(EduAllyApp());
 }
 
@@ -14,7 +23,12 @@ class EduAllyApp extends StatelessWidget {
         primaryColor: Color(0xFF5193B3),
         scaffoldBackgroundColor: Color(0xFFF5F7FA)
       ),
-      home: RoleSelectionPage(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => RoleSelectionPage(),
+        '/teacherLogin': (context) => TeacherLoginPage(),
+        '/home': (context) => HomePage(),
+      },
     );
   }
 }

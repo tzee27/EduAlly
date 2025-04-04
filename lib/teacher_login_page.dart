@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'forget_password_page.dart';
+import 'home_screen.dart';
 
 class TeacherLoginPage extends StatefulWidget {
   @override
@@ -81,7 +82,13 @@ class _TeacherLoginPageState extends State<TeacherLoginPage> {
                   backgroundColor: Color(0xFF5193B3),
                   padding: EdgeInsets.symmetric(vertical: 15),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  // Navigate to HomeScreen on login
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomePage()),
+                  );
+                },
                 child: Text('LOG IN', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white)),
               ),
             ),
