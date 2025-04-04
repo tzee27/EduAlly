@@ -44,11 +44,9 @@ class _ProfilePageState extends State<ProfilePage> {
           icon: Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             // Navigate to the Home Page directly
-            Navigator.pushAndRemoveUntil(
-              context,
-              MaterialPageRoute(builder: (context) => HomePage()),
-              (route) => false, // Remove all previous routes
-            );
+            if (HomePage.homeKey.currentState != null) {
+              HomePage.homeKey.currentState!.onItemTapped(0);
+            }
           },
         ),
         title: Text(

@@ -127,10 +127,9 @@ class _AIChatbotScreenState extends State<AIChatbotScreen> {
           icon: Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             // Navigate back to the Home Page
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => HomePage()),
-            );
+            if (HomePage.homeKey.currentState != null) {
+              HomePage.homeKey.currentState!.onItemTapped(0);
+            }
           },
         ),
         title: const Text(
@@ -425,8 +424,10 @@ class _AIChatbotScreenState extends State<AIChatbotScreen> {
         ),
         actions: [
           TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text("Close"),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: const Text("OK"),
           ),
         ],
       ),

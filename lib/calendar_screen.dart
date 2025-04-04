@@ -70,13 +70,11 @@ class _CalendarSchedulePageState extends State<CalendarSchedulePage> {
         elevation: 0,
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () {
-            // Navigate to the Home Page directly
-            Navigator.pushAndRemoveUntil(
-              context,
-              MaterialPageRoute(builder: (context) => HomePage()),
-              (route) => false, // Remove all previous routes
-            );
+           onPressed: () {
+            // Use HomePage's static key to switch to the dashboard tab
+            if (HomePage.homeKey.currentState != null) {
+              HomePage.homeKey.currentState!.onItemTapped(0);
+            }
           },
         ),
         title: Text(
