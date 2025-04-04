@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'forget_password_page.dart';
+import 'student_home_screen.dart';
 
 class StudentLoginPage extends StatefulWidget {
   @override
@@ -81,7 +82,12 @@ class _StudentLoginPageState extends State<StudentLoginPage> {
                   backgroundColor: Color(0xFF5193B3),
                   padding: EdgeInsets.symmetric(vertical: 15),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const HomeScreen()),
+                  );
+                },
                 child: Text('LOG IN', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white)),
               ),
             ),
