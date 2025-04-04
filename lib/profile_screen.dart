@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'teacher_login_page.dart';
+import 'role_selection_page.dart';
+import 'home_screen.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -41,8 +42,15 @@ class _ProfilePageState extends State<ProfilePage> {
         elevation: 0,
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.black),
-            onPressed: () => Navigator.pop(context),
-          ),
+          onPressed: () {
+            // Navigate to the Home Page directly
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => HomePage()),
+              (route) => false, // Remove all previous routes
+            );
+          },
+        ),
         title: Text(
           'Profile',
           style: TextStyle(
@@ -112,7 +120,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     width: 3,
                   ),
                   image: DecorationImage(
-                    image: NetworkImage('https://via.placeholder.com/100'),
+                    image: AssetImage('assets/profile_placeholder.png'),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -558,7 +566,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 width: 3,
                               ),
                               image: DecorationImage(
-                                image: NetworkImage('https://via.placeholder.com/100'),
+                                image: AssetImage('assets/profile_placeholder.png'),
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -720,10 +728,13 @@ class _ProfilePageState extends State<ProfilePage> {
               backgroundColor: Colors.red,
             ),
             onPressed: () {
-        // Log out action and navigate to TeacherLoginPage
-              Navigator.pushReplacement(
+              _resetAppState();
+
+                // Navigate to TeacherLoginPage
+              Navigator.pushAndRemoveUntil(
                 context,
-                MaterialPageRoute(builder: (context) => TeacherLoginPage()),
+                MaterialPageRoute(builder: (context) => RoleSelectionPage()),
+                (route) => false, // Remove all previous routes
               );
             },
             child: Text('Log Out'),
@@ -732,6 +743,16 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
     );
   }
+
+  void _resetAppState() {
+  // Reset any app-specific state here
+  setState(() {
+    _isFaceIdEnabled = false;
+    _isTwoFactorEnabled = false;
+    _isNotificationsEnabled = true;
+    _isDarkModeEnabled = false;
+  });
+}
 
   void _showSuccessSnackbar(BuildContext context, String message) {
     ScaffoldMessenger.of(context).showSnackBar(

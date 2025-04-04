@@ -124,18 +124,15 @@ class _AIChatbotScreenState extends State<AIChatbotScreen> {
         backgroundColor: Colors.white,
         elevation: 1,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          icon: Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
-            // Check if we can pop (came from direct navigation)
-            if (Navigator.canPop(context)) {
-              Navigator.pop(context);
-            } else {
-              // We're in tab mode, so use the GlobalKey to navigate to the home tab
-              HomePage.homeKey.currentState?.onItemTapped(0);
-            }
+            // Navigate back to the Home Page
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => HomePage()),
+            );
           },
         ),
-            // Check if we can pop (came from direct navigation)
         title: const Text(
           'AI Assistant',
           style: TextStyle(

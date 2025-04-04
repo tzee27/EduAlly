@@ -333,9 +333,15 @@ class _SimplifiedStudentAnalysisPageState extends State<SimplifiedStudentAnalysi
           fit: StackFit.expand,
           children: [
             // This would be a camera preview in a real app
-            Image.network(
-              'https://via.placeholder.com/800x400/333333/666666?text=Camera+Preview',
-              fit: BoxFit.cover,
+            Container(
+              color: Colors.grey[800], // Simulates a camera preview
+              child: Center(
+                child: Icon(
+                  Icons.videocam,
+                  color: Colors.white,
+                  size: 50,
+                ),
+              ),
             ),
             Positioned(
               top: 12,

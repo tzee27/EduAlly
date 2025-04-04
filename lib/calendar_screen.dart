@@ -71,13 +71,12 @@ class _CalendarSchedulePageState extends State<CalendarSchedulePage> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
-            // Check if we can pop (came from direct navigation)
-            if (Navigator.canPop(context)) {
-              Navigator.pop(context);
-            } else {
-              // We're in tab mode, so find the HomePage state and switch to home tab
-              HomePage.homeKey.currentState?.onItemTapped(0);
-            }
+            // Navigate to the Home Page directly
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => HomePage()),
+              (route) => false, // Remove all previous routes
+            );
           },
         ),
         title: Text(
