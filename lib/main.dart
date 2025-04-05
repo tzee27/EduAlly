@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'role_selection_page.dart';
 import 'teacher_login_page.dart';
 import 'home_screen.dart';
 
 void main() async {
-   SystemChrome.setSystemUIOverlayStyle(
+  WidgetsFlutterBinding.ensureInitialized(); // Ensure binding
+  await Firebase.initializeApp(); // 🔥 Initialize Firebase
+
+  SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
       statusBarIconBrightness: Brightness.dark,
     ),
   );
+
   runApp(EduAllyApp());
 }
 
@@ -21,7 +26,7 @@ class EduAllyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Color(0xFF5193B3),
-        scaffoldBackgroundColor: Color(0xFFF5F7FA)
+        scaffoldBackgroundColor: Color(0xFFF5F7FA),
       ),
       initialRoute: '/',
       routes: {
@@ -32,6 +37,11 @@ class EduAllyApp extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
 
 // import 'package:flutter/material.dart';
 // import 'role_selection_page.dart';
