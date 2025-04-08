@@ -1,4 +1,14 @@
-# login_page
+# EduAlly – AI-Powered Education Assistant
+
+EduAlly is a Flutter-based mobile app that provides personalized support for both teachers and students. It integrates AI-powered chatbot functionality for students and CCTV-based analysis for teachers, supporting better learning and well-being.
+
+## 💡 Features
+
+- 🔐 Role-based login for Teachers and Students
+- 📆 Google Calendar Integration for schedule management
+- 💬 AI Chatbot (Gemini) for academic and mental health support
+- 🎥 CCTV Analysis UI for student behavior (teacher-only)
+- 🔥 Firebase Authentication & Firestore for data handling
 
 A new Flutter project.
 
